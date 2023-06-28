@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <h2 align="center">Edit Message</h2>
+    {% for x in data %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table border="1" align="center">
+            <tr>
+                <td>Edit name:</td>
+                <td><input type="text" name="uname" value="{{x.name}}"></td>
+            </tr>
+            <tr>
+                <td>Edit Email ID:</td>
+                <td><input type="email" name="umail" value="{{x.email}}"></td>
+            </tr>
+            <tr>
+                <td>Edit Mobile Number</td>
+                <td><input type="number" name="mobile" value="{{x.mobile}}"></td>
+            </tr>
+            <tr>
+                <td>Edit Message:</td>
+                <td><textarea name="msg" cols="30" rows="3" >{{ x.msg }}</textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Update"></td>
+            </tr>
+        </table>
+    </form>
+    {% endfor %}
+</body>
+</html>

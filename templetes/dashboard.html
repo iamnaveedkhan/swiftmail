@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>message|dashboard</title>
+</head>
+<body>
+        <h2 align="center">Dashboard</h2>
+        <p><a href="/create">send message</a></p>
+        <table border="1" align="center" cellpadding="2px" cellspacing="5px">
+            <tr>
+                <th>Sr.no</th>
+                <th>email</th>
+                <th>name</th>
+                <th>mobile</th>
+                <th>message</th>
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+            {% for x in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ x.email }}</td>
+                <td>{{ x.name }}</td>
+                <td>{{ x.mobile }}</td>
+                <td>{{ x.msg }}</td>
+                <td><a href="edit/{{ x.id }}">Edit</a></td>
+                <td><a href="delete/{{ x.id }}">Delete</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+        
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <style>
+      /* Add your custom CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      form {
+        display: flex;
+        gap: 20px;
+        flex-direction: row;
+        align-items: center;
+        padding: 20px;
+        justify-content: space-between;
+        background-color: rgb(199, 199, 212);
+        color: white;
+        border-radius: 10px;
+        margin: 20px auto;
+        width: 95%;
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      form input,
+      form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      form textarea {
+        resize: none;
+      }
+
+      form button {
+        padding: 8px 16px;
+        width: 100px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
+    <form
+      action="http://127.0.0.1:8000/create"
+      method="post"
+      onsubmit="return validateForm()"
+    >
+      {% csrf_token %}
+      <label for="uname">Name:</label>
+      <input type="text" id="uname" name="uname" required />
+
+      <label for="mobile">Mobile:</label>
+      <input type="text" id="mobile" name="mobile" required />
+
+      <label for="umail">Email:</label>
+      <input type="email" id="umail" name="umail" required />
+
+      <label for="msg">Message:</label>
+      <textarea id="msg" name="msg" required></textarea>
+
+      <button type="submit">CREATE</button>
+    </form>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Message</th>
+      </tr>
+      {% for message in messages %}
+      <tr>
+        <td>{{ message.name }}</td>
+        <td>{{ message.mobile }}</td>
+        <td>{{ message.email }}</td>
+        <td>{{ message.msg }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+
+  <script>
+    function validateMobile() {
+      var mobileInput = document.getElementById("mobile");
+      var mobilePattern = /^\d{10}$/;
+
+      if (!mobilePattern.test(mobileInput.value)) {
+        alert("Please enter a valid 10-digit mobile number.");
+        mobileInput.focus();
+        return false;
+      }
+
+      return true;
+    }
+
+    function validateEmail() {
+      var emailInput = document.getElementById("umail");
+      var emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+      if (!emailPattern.test(emailInput.value)) {
+        alert("Please enter a valid email address.");
+        emailInput.focus();
+        return false;
+      }
+
+      return true;
+    }
+
+    function validateForm() {
+      if (!validateMobile() || !validateEmail()) {
+        return false;
+      }
+    }
+  </script>
+</html> -->
